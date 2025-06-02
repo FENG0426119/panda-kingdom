@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Kingdom: Card Fortune - Contact & Privacy</title>
+    <style>
+        :root {
+            --primary: #4a6baf;
+            --secondary: #f8f9fa;
+            --accent: #ff6b6b;
+            --text: #333;
+            --light-text: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            min-width: 100px;
+            color: var(--primary);
+        }
+        
+        .download-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #6a8fd8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(74, 107, 175, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 107, 175, 0.4);
+        }
+        
+        .privacy-content {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .privacy-content p {
+            margin-bottom: 15px;
+        }
+        
+        .privacy-link {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .privacy-link:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        /* 新增的表单样式 */
+        .contact-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .required::after {
+            content: " *";
+            color: var(--accent);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), #6a8fd8);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #3a5a9f, #5a7fc8);
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 成功弹窗样式 */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .success-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .success-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .success-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .success-content .close-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .success-content .close-btn:hover {
+            background: #3a5a9f;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Panda Kingdom: Card Fortune</h1>
+    
+    <div class="contact-info">
+        <h2>Contact Information</h2>
+        <div class="info-item">
+            <span class="info-label">Name:</span>
+            <span>YAO WENBIN</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Email:</span>
+            <span><a href="mailto:yaowenbin94@outlook.com">yaowenbin94@outlook.com</a></span>
+        </div>
+    </div>
+
+    <!-- 新增的联系表单 -->
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <p>Drop us a line! We'd love to hear from you.</p>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email" class="required">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+            
+            <div class="form-footer">
+                By submitting this form, you agree to our <a href="https://panda-kingdom.live/privacy.html" target="_blank">Privacy Policy</a>.
+            </div>
+        </form>
+    </div>
+    
+    <div class="download-section">
+        <h2>Download on App Store</h2>
+        <a href="https://www.apple.com/store" class="download-btn">Download Now</a>
+    </div>
+    
+    <div class="privacy-content">
+        <h2>Privacy Policy</h2>
+        <p>Your privacy is important to us. Panda Kingdom: Card Fortune is committed to protecting your personal information while providing an enjoyable gaming experience.</p>
+        
+        <p><strong>Information We Collect:</strong></p>
+        <p>We may collect non-personal information such as device type, operating system, gameplay statistics, and in-game preferences to improve our services. This data is anonymized and used solely for analytics and game optimization.</p>
+        
+        <p><strong>How We Use Your Information:</strong></p>
+        <p>Collected data helps us enhance gameplay, fix bugs, and develop new features. We do not sell or share your information with third parties for marketing purposes.</p>
+        
+        <p><strong>Children's Privacy:</strong></p>
+        <p>Our game is designed for a general audience and does not knowingly collect personal information from children under 13 without parental consent.</p>
+        
+        <p><strong>Data Security:</strong></p>
+        <p>We implement appropriate security measures to protect against unauthorized access to or unauthorized alteration of your information.</p>
+        
+        <p><strong>Contact Us:</strong></p>
+        <p>For any questions about this privacy policy or your data, please contact us at <a href="mailto:yaowenbin94@outlook.com">yaowenbin94@outlook.com</a>. We typically respond within 3-5 business days.</p>
+        
+        <p>This policy may be updated periodically. Continued use of Panda Kingdom: Card Fortune constitutes acceptance of the current policy.</p>
+        
+        <a href="https://panda-kingdom.live/privacy.html" class="privacy-link" target="_blank">View Full Privacy Policy</a>
+    </div>
+    
+    <!-- 成功弹窗 -->
+    <div id="successModal" class="success-modal">
+        <div class="success-content">
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for contacting us. We've received your message and will get back to you within 24 hours.</p>
+            <button class="close-btn" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2025 Panda Kingdom: Card Fortune. All rights reserved.
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表单默认提交
+            
+            // 这里可以添加实际的表单提交逻辑
+            // 例如使用Fetch API发送数据到服务器
+            
+            // 模拟表单提交成功
+            setTimeout(function() {
+                document.getElementById('successModal').style.display = 'flex';
+                document.getElementById('contactForm').reset(); // 重置表单
+            }, 500);
+        });
+        
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
